@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\DTController;
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\StadiumController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +25,25 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
+])->get('/home', function(){
+  return view('home');
+})->name('home');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
 
-Route::resource()
+Route::resource('stadiums', StadiumController::class);
+Route::resource('teams', TeamController::class);
+Route::resource('player', PlayerController::class);
+Route::resource('dt', DTController::class);
+
+
+
