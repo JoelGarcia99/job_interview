@@ -62,6 +62,7 @@
 				$today = new Datetime(date('y.m.d'));
 				$diff = $today->diff(new DateTime($player->born_date));
 			      @endphp
+
 			      <tr class="bg-white border-b">
 				<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
 				  {{$player->id}}

@@ -9,7 +9,7 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $fillabel = [
+    protected $fillable = [
       'slug', 'born_date', 'dorsal', 'position',
       'foot', 'name', 'team_id'
     ];

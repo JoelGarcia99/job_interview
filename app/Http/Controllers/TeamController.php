@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TeamController extends Controller
 {
@@ -23,7 +24,6 @@ class TeamController extends Controller
   public function validate_fields(Request $request) {
     $request->validate([
       'name'=>'required|max:80',
-      'slug'=>'required|max:100',
       'color' => 'required|max:20',
       'location' => 'required|max:100',
       'history' => 'required',
@@ -36,12 +36,14 @@ class TeamController extends Controller
   public function store(Request $request) {
 
     $this->validate_fields($request);
+    $request->request->add(['slug'=>Str::slug($request->name.$request->id.$request->dt, '-')]);
     $team = Team::create($request->all());
 
     return redirect()->route('teams.show', $team);
   }
 
   public function show(Team $team) {
+    // Players related to this team
     $players = Player::where('team_id', $team->id)->paginate(5);
     return view('teams.show', compact('team', 'players'));
   }
@@ -63,7 +65,9 @@ class TeamController extends Controller
 
     $team->save();
 
-    return view('teams.show', compact('team'));
+    // list of players related to this team
+    $players = Player::where('team_id', $team->id)->paginate(5);
+    return view('teams.show', compact('team', 'players'));
   }
 
   public function destroy(Team $team) {

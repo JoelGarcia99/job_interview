@@ -28,7 +28,7 @@ class PlayerFactory extends Factory
 	  'dorsal'=>$this->faker->randomNumber(2),
 	  'position'=>$this->faker->randomElement(['DC','DF','PT','MC','LI','LD','EXI','EXD','MO']),
 	  'foot'=>$this->faker->randomElement(['L', 'R']),
-	  'slug'=> Str::slug($name).'-'.$this->faker->randomNumber(),
+	  'slug'=> Str::slug($name, '-').'-'.$this->faker->randomNumber(),
 	  'born_date'=>$this->faker->date(),
 	  'team_id'=>$this->faker->randomNumber(1, strict: true)
         ];

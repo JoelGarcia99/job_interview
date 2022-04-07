@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Players | Job Interview') }}
+            {{ __('Player detail | Job Interview') }}
         </h2>
     </x-slot>
 
@@ -11,17 +11,17 @@
 	      <!-- Header -->
 	      <div class="container flex mb-4">
 		<div class="flex-1">
-		  <h1 class="font-bold flex-1">{{$team->name}} (DT: {{$team->dt}})</h1>
-		  <small>{{$team->stadium}} | {{$team->location}}</small>
+		  <h1 class="font-bold flex-1">{{$player->name}} (DT: {{$player->dt}})</h1>
+		  <small>{{$player->stadium}} | {{$player->location}}</small>
 		</div>
 
 		<a 
-		  href="{{route('teams.edit', $team)}}" 
+		  href="{{route('players.edit', $player)}}" 
 		  class="bg-transparent mr-2 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounde"
 		>
 		  Edit
 		<a 
-		  href="{{route('teams.index')}}" 
+		  href="{{route('players.index')}}" 
 		  class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounde"
 		>
 		  Go back
@@ -29,14 +29,14 @@
 	      </div>
 	      <br>
 
-	      <!-- a little history about the team -->
+	      <!-- a little history about the player -->
 	      <h2 class="my-2 font-bold text-base">History</h2>
-	      <span>{{$team->history != null? $team->history:"No history"}}</span>
+	      <span>{{$player->history != null? $player->history:"No history"}}</span>
 	      <br>
 	      <br>
 
-	      <!-- showing list of players in the team -->
-	      <h2 class="font-bold text-base">Players on this team</h2>
+	      <!-- showing list of players in the player -->
+	      <h2 class="font-bold text-base">Players on this player</h2>
 		<table class="min-w-full">
 		  <thead class="border-b">
 		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
@@ -105,7 +105,7 @@
 		  </tbody>
 		</table>
 	      <div class="flex flex-1 items-center justify-center py-3">
-		<form action="{{route('teams.destroy', $team)}}" method="POST">
+		<form action="{{route('players.destroy', $player)}}" method="POST">
 		  @csrf
 		  @method('DELETE')
 		  <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent self-center rounded">

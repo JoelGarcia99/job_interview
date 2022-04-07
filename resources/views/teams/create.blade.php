@@ -35,13 +35,6 @@
 		      placeholder="The team name"
 		    />
 
-		    <x-custom-input
-		      class="w-full md:w-1/3 px-3"
-		      name="slug"
-		      title="Slug"
-		      type="text"
-		      placeholder="a-friendly-url-name"
-		    />
 		  </div>
 
 		  <div class="flex flex-wrap -mx-3 mb-6">

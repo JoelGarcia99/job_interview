@@ -29,7 +29,7 @@ class TeamFactory extends Factory
 	  'dt'=>$this->faker->name(),
 	  'stadium'=>$this->faker->name(),
 	  'history'=>$this->faker->paragraph(),
-	  'slug'=>Str::slug($name)
+	  'slug'=>Str::slug($name, '-')
         ];
     }
 }
