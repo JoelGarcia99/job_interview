@@ -6,8 +6,12 @@
     >
       {{$attributes['title']}}
     </label>
+
     <input 
-      class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      class="appearance-none block w-full bg-gray-200 "
+	    ."text-gray-700 border border-red-500 rounded"
+	    ." py-3 px-4 mb-3 leading-tight focus:outline-none"
+	    ." focus:bg-white"
       type="{{$attributes['type']}}"
       name="{{$attributes['name']}}"
       placeholder="{{$attributes['placeholder']}}"

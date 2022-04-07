@@ -36,8 +36,8 @@
 	      <br>
 
 	      <!-- showing list of players in the team -->
-	      <h2 class="font-bold text-base">Players on this team</h2>
-		<table class="min-w-full">
+	      <h2 class="container mx-auto font-bold text-base">Players on this team</h2>
+		<table class="min-w-full mx-auto">
 		  <thead class="border-b">
 		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
 			ID

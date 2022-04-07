@@ -88,7 +88,7 @@
 		      </label>
 		      <select name="foot">
 			@foreach(['L', 'R'] as $option)
-			  <option value="{{$option}}" selected="{{old('foot')== $option}}">
+			  <option value="{{$option}}" {{old('foot')== $option?"selected":""}}">
 			    {{$option}}
 			  </option>
 			@endforeach

@@ -54,4 +54,10 @@ class PlayerController extends Controller
 
     return view('players.show', compact('player', 'team'));
   }
+
+  public function destroy(Player $player) {
+    $player -> delete();
+
+    return redirect()->route('player.index');
+  }
 }
