@@ -43,28 +43,53 @@
 		      placeholder="a-friendly-url-name"
 		    />
 		  </div>
+
 		  <div class="flex flex-wrap -mx-3 mb-6">
+
 		    <x-custom-input 
 		      class="w-full border-0 px-3 mb-6 md:mb-0"
 		      name="color"
-		      title="Team color"
+		      title="Team Color"
 		      type="text"
-		      placeholder="name"
+		      placeholder="white"
+		    />
+		    <x-custom-input 
+		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      name="dt"
+		      title="DT name"
+		      type="text"
+		      placeholder="Diego Maradona"
 		    />
 
-		    <x-custom-input
-		      class="w-full md:w-1/2 px-3"
+		  </div>
+
+		  <div class="flex flex-wrap -mx-3 mb-6">
+		    <x-custom-input 
+		      class="w-full border-0 px-3 mb-6 md:mb-0"
 		      name="location"
 		      title="Location"
 		      type="text"
 		      placeholder="City, Country"
 		    />
+
+		    <x-custom-input 
+		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      name="stadium"
+		      title="Stadium"
+		      type="text"
+		      placeholder="Arena"
+		    />
 		  </div>
+
 
 		  <div class="w-full">
 		    <label for="">History</label>
-		    <textarea name="history" class="w-full" name="" cols="30" rows="10"></textarea>
-		  </div>
+		    <textarea name="history" class="w-full" rows="10">{{old('history')}}</textarea>
+		    @error('history')
+		     <p class="text-red-500 text-xs italic">{{$message}}</p>
+		    @enderror
+		  </div> 
+
 		  <div class="container flex justify-center flex-1">
 		    <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
 		      Create Team

@@ -11,8 +11,8 @@
 	      <!-- Header -->
 	      <div class="container flex mb-4">
 		<div class="flex-1">
-		  <h1 class="font-bold flex-1">{{$team->name}} ({{"DT Pending"}})</h1>
-		  <small>{{$team->location}}</small>
+		  <h1 class="font-bold flex-1">{{$team->name}} (DT: {{$team->dt}})</h1>
+		  <small>{{$team->stadium}} | {{$team->location}}</small>
 		</div>
 
 		<a 

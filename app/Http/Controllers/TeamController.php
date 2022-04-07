@@ -19,16 +19,22 @@ class TeamController extends Controller
     return view('teams.create');
   }
 
-  public function store(Request $request) {
+  public function validate_fields(Request $request) {
     $request->validate([
       'name'=>'required|max:80',
-      'slug'=>'required',
+      'slug'=>'required|max:100',
       'color' => 'required|max:20',
       'location' => 'required|max:100',
-      'history' => 'required'
+      'history' => 'required',
+      'stadium' => 'required|max:100',
+      'dt' => 'required|max:100'
     ]);
+  }
 
 
+  public function store(Request $request) {
+
+    $this->validate_fields($request);
     $team = Team::create($request->all());
 
     return redirect()->route('teams.show', $team);
@@ -43,19 +49,15 @@ class TeamController extends Controller
   }
 
   public function update(Request $request, Team $team) {
-    $request->validate([
-      'name'=>'required|max:80',
-      'slug'=>'required',
-      'color' => 'required|max:20',
-      'location' => 'required|max:100',
-      'history' => 'required'
-    ]);
+    $this->validate_fields($request);
 
     $team->name = $request->name;
     $team->slug = $request->slug;
     $team->history = $request->history;
     $team->location = $request->location;
     $team->color = $request->color;
+    $team->dt = $request->dt;
+    $team->stadium = $request->stadium;
 
     $team->save();
 

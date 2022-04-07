@@ -13,7 +13,7 @@ class Team extends Model
     use HasFactory;
 
     protected $fillable = [
-      'color', 'location', 'name', 'slug', 'history'
+      'color', 'location', 'name', 'slug', 'dt', 'stadium', 'history'
     ];
 
     public function getRouteKeyName() {

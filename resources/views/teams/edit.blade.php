@@ -66,9 +66,30 @@
 		    />
 		  </div>
 
+		  <div class="flex flex-wrap -mx-3 mb-6">
+		    <x-custom-input
+		      class="w-full md:w-1/2 mb-6 px-3"
+		      name="dt"
+		      value="{{$team->dt}}"
+		      title="DT"
+		      type="text"
+		      placeholder="Diego"
+		    />
+		    <x-custom-input
+		      class="w-full md:w-1/2 px-3"
+		      name="stadium"
+		      value="{{$team->stadium}}"
+		      title="Stadium"
+		      type="text"
+		      placeholder="Arena"
+		    />
+		  </div>
 		  <div class="w-full">
 		    <label for="">History</label>
-		    <textarea name="history" rows=10 class="w-full">{{$team->history}}</textarea>
+		    <textarea name="history" rows=10 class="w-full">{{old('history') != null? old('history'):$team->history}}</textarea>
+		    @error('history')
+		     <p class="text-red-500 text-xs italic">{{$message}}</p>
+		    @enderror
 		  </div>
 		  <div class="container flex justify-center flex-1">
 		    <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
