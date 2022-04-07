@@ -21,6 +21,9 @@ class TeamController extends Controller
     return view('teams.create');
   }
 
+  // this method will validate some important fields for the 
+  // process of team creation. This will throw an exception 
+  // if there is any problem.
   public function validate_fields(Request $request) {
     $request->validate([
       'name'=>'required|max:80',
@@ -36,6 +39,8 @@ class TeamController extends Controller
   public function store(Request $request) {
 
     $this->validate_fields($request);
+
+    // The slug should always be auto generated
     $request->request->add(['slug'=>Str::slug($request->name.$request->id.$request->dt, '-')]);
     $team = Team::create($request->all());
 
@@ -71,9 +76,7 @@ class TeamController extends Controller
   }
 
   public function destroy(Team $team) {
-
     $team->delete();
-
     return redirect()->route('teams.index');
   }
 }
