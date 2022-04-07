@@ -11,7 +11,7 @@ class Player extends Model
 
     protected $fillabel = [
       'slug', 'born_date', 'dorsal', 'position',
-      'foot', 'name'
+      'foot', 'name', 'team_id'
     ];
 
     public function getRouteKeyName() {

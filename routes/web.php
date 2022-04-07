@@ -39,10 +39,8 @@ Route::middleware([
     return view('home');
   })->name('home');
 
-  Route::resource('stadiums', StadiumController::class);
   Route::resource('teams', TeamController::class);
   Route::resource('player', PlayerController::class);
-  Route::resource('dt', DTController::class);
 });
 
 

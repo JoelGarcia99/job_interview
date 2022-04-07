@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,8 @@ class TeamController extends Controller
   }
 
   public function show(Team $team) {
-    return view('teams.show', ['team'=>$team]);
+    $players = Player::where('team_id', $team->id)->paginate(5);
+    return view('teams.show', compact('team', 'players'));
   }
 
   public function edit(Team $team) {

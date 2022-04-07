@@ -10,6 +10,7 @@
     <!-- a kind of header  -->
     <div class="container flex py-4 px-4 self-center rounded overflow-hidden shadow-lg">
       <h2 class="font-bold flex-1 w-64">Teams | Job Interview</h2>
+      <a class="mr-2 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" href="{{route('register')}}">Register</a>
       <a class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" href="{{route('login')}}">Login</a>
     </div>
     <div>
