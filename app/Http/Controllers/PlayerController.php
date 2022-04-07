@@ -38,7 +38,7 @@ class PlayerController extends Controller
     return view('players.create', compact('teams'));
   }
 
-  public function store(Request $request) {
+  public function validate_fields(Request $request){
     $request->validate([
       'name'=>'required',
       'team_id'=>'required',
@@ -48,6 +48,11 @@ class PlayerController extends Controller
       'born_date' => 'required|date'
 
     ]);
+  }
+
+  public function store(Request $request) {
+
+    $this->validate_fields($request);
 
     // The slug should be auto generated since it needs to
     // be unique and the user could no be aware about the slug
@@ -78,6 +83,8 @@ class PlayerController extends Controller
   }
 
   public function update(Request $request, Player $player) {
+
+    $this->validate_fields($request);
 
     // It is better to update all these fields this way since
     // if you make a massive assignation there could be fields

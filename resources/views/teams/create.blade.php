@@ -26,9 +26,10 @@
 		  <!-- secure token -->
 		  @csrf
 
-		  <div class="flex flex-wrap -mx-3 mb-6">
+		  <div class="flex flex-wrap -mx-3">
 		    <x-custom-input 
-		      class="w-full md:w-1/3 px-3 mb-6 md:mb-0"
+		      class="w-full border-white md:w-1/3 px-3 mb-6 md:mb-0"
+		      style="border: none !important"
 		      name="name"
 		      title="Team name"
 		      type="text"
@@ -38,19 +39,20 @@
 		  </div>
 
 		  <div class="flex flex-wrap -mx-3 mb-6">
-
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-40 flex-1 border-0 px-3 mb-6 md:mb-0"
+		      style="border: none !important"
 		      name="color"
 		      title="Team Color"
 		      type="text"
 		      placeholder="white"
 		    />
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-40 flex-1 border-0 px-3 mb-6 md:mb-0"
 		      name="dt"
 		      title="DT name"
 		      type="text"
+		      style="border: none !important"
 		      placeholder="Diego Maradona"
 		    />
 
@@ -58,18 +60,20 @@
 
 		  <div class="flex flex-wrap -mx-3 mb-6">
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-40 flex-1 px-3 mb-6 md:mb-0"
 		      name="location"
 		      title="Location"
 		      type="text"
+		      style="border: none !important"
 		      placeholder="City, Country"
 		    />
 
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-40 flex-1 px-3 mb-6 md:mb-0"
 		      name="stadium"
 		      title="Stadium"
 		      type="text"
+		      style="border: none !important"
 		      placeholder="Arena"
 		    />
 		  </div>

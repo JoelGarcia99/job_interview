@@ -12,7 +12,7 @@
 	      <div class="container flex mb-4">
 		<h1 class="font-bold flex-1">Create a new Team</h1>
 		<a 
-		  href="{{route('teams.index')}}" 
+		  href="{{route('teams.show', $team)}}" 
 		  class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounde"
 		>
 		  Go back
@@ -29,7 +29,8 @@
 
 		  <div class="flex flex-wrap -mx-3 mb-6">
 		    <x-custom-input 
-		      class="w-full md:w-1/3 px-3 mb-6 md:mb-0"
+		      class="w-40 flex-1 md:w-1/3 px-3 mb-6 md:mb-0"
+		      style="border: none !important"
 		      name="name"
 		      title="Team name"
 		      type="text"
@@ -38,9 +39,10 @@
 		    />
 
 		    <x-custom-input
-		      class="w-full md:w-1/3 px-3"
+		      class="w-40 flex-1 md:w-1/3 px-3"
 		      name="slug"
 		      title="Slug"
+		      style="border: none !important"
 		      type="text"
 		      value="{{$team->slug}}"
 		      placeholder="a-friendly-url-name"
@@ -48,35 +50,39 @@
 		  </div>
 		  <div class="flex flex-wrap -mx-3 mb-6">
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-40 flex-1 border-0 px-3 mb-6 md:mb-0"
 		      name="color"
 		      title="Team color"
 		      value="{{$team->color}}"
 		      type="text"
 		      placeholder="name"
+		      style="border: none !important"
 		    />
 
 		    <x-custom-input
-		      class="w-full md:w-1/2 px-3"
+		      class="w-40 flex-1 md:w-1/2 px-3"
 		      name="location"
 		      value="{{$team->location}}"
 		      title="Location"
 		      type="text"
 		      placeholder="City, Country"
+		      style="border: none !important"
 		    />
 		  </div>
 
 		  <div class="flex flex-wrap -mx-3 mb-6">
 		    <x-custom-input
-		      class="w-full md:w-1/2 mb-6 px-3"
+		      class="w-40 flex-1 md:w-1/2 mb-6 px-3"
 		      name="dt"
 		      value="{{$team->dt}}"
 		      title="DT"
 		      type="text"
+		      style="border: none !important"
 		      placeholder="Diego"
 		    />
 		    <x-custom-input
-		      class="w-full md:w-1/2 px-3"
+		      class="w-40 flex-1 md:w-1/2 px-3"
+		      style="border: none !important"
 		      name="stadium"
 		      value="{{$team->stadium}}"
 		      title="Stadium"

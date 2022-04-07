@@ -33,14 +33,15 @@
 		      name="name"
 		      title="Name"
 		      type="text"
+		      style="border: none !important"
 		      placeholder="Player's name"
 		      value="{{$player->name}}"
 		    />
 		  </div>
 
-		  <div class="flex flex-wrap -mx-3 mb-6">
-
-		    <div class="w-full border-0 px-3 mb-6 md:mb-0">
+		  <div class="flex flex-wrap justify-center items-center -mx-3 mb-6">
+		    <!-- team selection -->
+		    <div class="w-40 px-3 mb-6 md:mb-0">
 		      <label 
 			class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 			for="team_id"
@@ -59,7 +60,8 @@
 		      @enderror
 		    </div>
 
-		    <div class="w-full border-0 px-3 mb-6 md:mb-0">
+		    <!-- position -->
+		    <div class="w-20 px-3 mb-6 md:mb-0">
 		      <label 
 			class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 			for="position"
@@ -78,10 +80,12 @@
 		      @enderror
 
 		    </div>
-		  </div>
 
-		  <div class="flex flex-wrap -mx-3 mb-6">
-		    <div class="w-full border-0 px-3 mb-6 md:mb-0">
+		    <!-- this is just a blank space -->
+		    <div class="w-5"></div>
+		    
+		    <!-- foot -->
+		    <div class="w-25 px-3 mb-6 md:mb-0">
 		      <label 
 			class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
 			for="foot"
@@ -103,17 +107,19 @@
 		    </div>
 
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-20 flex-1 px-3 mb-6 md:mb-0"
 		      name="dorsal"
 		      title="Dorsal"
 		      type="number"
+		      style="border: none !important"
 		      value="{{$player->dorsal}}"
 		    />
 		    <x-custom-input 
-		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      class="w-20 flex-1 px-3 mb-6 md:mb-0"
 		      name="born_date"
 		      title="Born Date"
 		      type="date"
+		      style="border: none !important"
 		      value="{{$player->born_date}}"
 		    />
 		  </div>
