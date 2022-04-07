@@ -18,4 +18,22 @@ class TeamController extends Controller
 
     return view('teams.create');
   }
+
+  public function store(Request $request) {
+    $request->validate([
+      'name'=>'required|max:50',
+      'slug'=>'required|max:60',
+      'color' => 'required|max:20',
+      'location' => 'required|max:100'
+    ]);
+
+    $team = Team::create($request->all());
+
+    return redirect()->route('teams.create');
+  }
+
+  public function show(Team $team) {
+
+    return view('teams.show', ['team'=>$team]);
+  }
 }
