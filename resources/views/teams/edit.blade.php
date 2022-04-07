@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Teams | Job Interview') }}
+            {{ __('Edit Team | Job Interview') }}
         </h2>
     </x-slot>
 
@@ -22,9 +22,10 @@
 	      
 	      <!-- Register form-->
 	      <div class="container">
-		<form class="w-full max-w-lg" method="POST" action="{{route('teams.store')}}">
+		<form class="w-full max-w-lg" method="POST" action="{{route('teams.update', $team)}}">
 		  <!-- secure token -->
 		  @csrf
+		  @method('PUT')
 
 		  <div class="flex flex-wrap -mx-3 mb-6">
 		    <x-custom-input 
@@ -32,6 +33,7 @@
 		      name="name"
 		      title="Team name"
 		      type="text"
+		      value="{{$team->name}}"
 		      placeholder="The team name"
 		    />
 
@@ -40,6 +42,7 @@
 		      name="slug"
 		      title="Slug"
 		      type="text"
+		      value="{{$team->slug}}"
 		      placeholder="a-friendly-url-name"
 		    />
 		  </div>
@@ -48,6 +51,7 @@
 		      class="w-full border-0 px-3 mb-6 md:mb-0"
 		      name="color"
 		      title="Team color"
+		      value="{{$team->color}}"
 		      type="text"
 		      placeholder="name"
 		    />
@@ -55,6 +59,7 @@
 		    <x-custom-input
 		      class="w-full md:w-1/2 px-3"
 		      name="location"
+		      value="{{$team->location}}"
 		      title="Location"
 		      type="text"
 		      placeholder="City, Country"
@@ -63,11 +68,11 @@
 
 		  <div class="w-full">
 		    <label for="">History</label>
-		    <textarea name="history" class="w-full" name="" cols="30" rows="10"></textarea>
+		    <textarea name="history" rows=10 class="w-full">{{$team->history}}</textarea>
 		  </div>
 		  <div class="container flex justify-center flex-1">
 		    <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-		      Create Team
+		      Update Team
 		    </button>
 		  </div>
 		</form>

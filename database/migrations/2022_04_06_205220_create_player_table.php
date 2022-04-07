@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-	    $table->string('name', 200);
+	    $table->string('name');
 	    $table->unsignedSmallInteger('dorsal');
 	    $table->enum('position', array('DC', 'DF', 'PT', 'MC', 'LI', 'LD', 'EXI', 'EXD', 'MO'));
 	    $table->enum('foot', array('L', 'R'));
-	    $table->string('slug', 60)->unique();
+	    $table->string('slug')->unique();
 	    $table->date('born_date');
             $table->timestamps();
 

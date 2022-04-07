@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    // If user is already in a session, him/she is
+    // not gonna be able to view this page
+    if(auth()->user() != null) {
+      return redirect('home');
+    }
+
+    // If user is not authenticated, then main page is showed
     return view('welcome');
 });
 
@@ -25,25 +33,17 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
-])->get('/home', function(){
-  return view('home');
-})->name('home');
+])->group(function() {
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
+  Route::get('/home', function(){
+    return view('home');
+  })->name('home');
 
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+  Route::resource('stadiums', StadiumController::class);
+  Route::resource('teams', TeamController::class);
+  Route::resource('player', PlayerController::class);
+  Route::resource('dt', DTController::class);
 });
-
-Route::resource('stadiums', StadiumController::class);
-Route::resource('teams', TeamController::class);
-Route::resource('player', PlayerController::class);
-Route::resource('dt', DTController::class);
 
 
 

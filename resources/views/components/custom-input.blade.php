@@ -11,7 +11,7 @@
       type="{{$attributes['type']}}"
       name="{{$attributes['name']}}"
       placeholder="{{$attributes['placeholder']}}"
-      value="{{old($attributes['name'])}}"
+      value="{{old($attributes['name']) != null? old($attributes['name']):$attributes['value']}}"
     >
     @error($attributes['name'])
        <p class="text-red-500 text-xs italic">{{$message}}</p>

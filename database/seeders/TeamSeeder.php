@@ -6,16 +6,24 @@ use App\Models\Team;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class TeamSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
       Team::factory(30)->create();
+
+      $team = new Team();
+
+      $team->name='FC Barcelona';
+      $team->color='Blue';
+      $team->location='Barcelona, Spain';
+      $team->slug='fc-barcelona';
+
+      $team->save();
     }
 }
