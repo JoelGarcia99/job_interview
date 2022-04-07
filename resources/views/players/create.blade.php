@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Register a new player | Job Interview') }}
+            {{ __('Player registration | Job Interview') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="py-4 px-4 bg-white overflow-hidden shadow-xl sm:rounded-lg">
 	      <!-- Header -->
 	      <div class="container flex mb-4">
-		<h1 class="font-bold flex-1">Create a new Team</h1>
+		<h1 class="font-bold flex-1">Create a new player</h1>
 		<a 
 		  href="{{route('player.index')}}" 
 		  class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounde"
@@ -47,7 +47,7 @@
 		      </label>
 		      <select name="team_id">
 			@foreach($teams as $option)
-			  <option value="{{$option->id}}" selected="{{old('team_id')==$option->id}}">
+			  <option value="{{$option->id}}" {{old('team_id')==$option->id?"selected":""}}>
 			    {{$option->name}}
 			  </option>
 			@endforeach
@@ -66,7 +66,7 @@
 		      </label>
 		      <select name="position">
 			@foreach(['PT','DC','DF','MC','LI','LD','EXI','EXD','MO'] as $option)
-			  <option value="{{$option}}" selected="{{old('position')== $option}}">
+			  <option value="{{$option}}" {{old('position')== $option?"selected":""}}>
 			    {{$option}}
 			  </option>
 			@endforeach
@@ -88,7 +88,7 @@
 		      </label>
 		      <select name="foot">
 			@foreach(['L', 'R'] as $option)
-			  <option value="{{$option}}" {{old('foot')== $option?"selected":""}}">
+			  <option value="{{$option}}" {{old('foot')== $option?"selected":""}}>
 			    {{$option}}
 			  </option>
 			@endforeach
@@ -110,7 +110,7 @@
 		      class="w-full border-0 px-3 mb-6 md:mb-0"
 		      name="born_date"
 		      title="Born Date"
-		      type="datetime-local"
+		      type="date"
 		    />
 		  </div>
 

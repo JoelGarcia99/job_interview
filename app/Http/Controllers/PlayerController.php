@@ -52,12 +52,32 @@ class PlayerController extends Controller
       :Team::where('id', $player->team_id)
 	      ->first();
 
-    return view('players.show', compact('player', 'team'));
+    return redirect()->route('player.show', compact('player', 'team'));
   }
 
   public function destroy(Player $player) {
     $player -> delete();
 
     return redirect()->route('player.index');
+  }
+
+  public function edit(Player $player) {
+    $teams = Team::all();
+
+    return view('players.edit', compact('player', 'teams'));
+  }
+
+  public function update(Request $request, Player $player) {
+
+    $player->name = $request->name;
+    $player->dorsal = $request->dorsal;
+    $player->position = $request->position;
+    $player->foot = $request->foot;
+    $player->born_date = $request->born_date;
+    $player->team_id = $request->team_id;
+
+    $player->save();
+
+    return redirect()->route('player.show', compact('player'));
   }
 }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Player detail | Job Interview') }}
+            {{ __('Edit player | Job Interview') }}
         </h2>
     </x-slot>
 
@@ -10,111 +10,122 @@
             <div class="py-4 px-4 bg-white overflow-hidden shadow-xl sm:rounded-lg">
 	      <!-- Header -->
 	      <div class="container flex mb-4">
-		<div class="flex-1">
-		  <h1 class="font-bold flex-1">{{$player->name}} (DT: {{$player->dt}})</h1>
-		  <small>{{$player->stadium}} | {{$player->location}}</small>
-		</div>
-
+		<h1 class="font-bold flex-1">Editing player {{$player->name}}</h1>
 		<a 
-		  href="{{route('players.edit', $player)}}" 
-		  class="bg-transparent mr-2 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounde"
-		>
-		  Edit
-		<a 
-		  href="{{route('players.index')}}" 
+		  href="{{route('player.show', $player)}}" 
 		  class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounde"
 		>
 		  Go back
 		</a>
 	      </div>
-	      <br>
-
-	      <!-- a little history about the player -->
-	      <h2 class="my-2 font-bold text-base">History</h2>
-	      <span>{{$player->history != null? $player->history:"No history"}}</span>
-	      <br>
-	      <br>
-
-	      <!-- showing list of players in the player -->
-	      <h2 class="font-bold text-base">Players on this player</h2>
-		<table class="min-w-full">
-		  <thead class="border-b">
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			ID
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Name
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Slug
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Dorsal
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Position
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Age
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Foot
-		      </th>
-		      <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-			Team
-		      </th>
-		    <tr>
-		  </thead>
-		  <tbody>
-		    @foreach($players as $player)
-		    @php
-		      $today = new Datetime(date('y.m.d'));
-		      $diff = $today->diff(new DateTime($player->born_date));
-		    @endphp
-		    <tr class="bg-white border-b">
-		      <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-			{{$player->id}}
-		      </td>
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			{{$player->name}}
-		      </td>
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			{{$player->slug}}
-		      </td>
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			{{$player->dorsal}}
-		      </td>
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			{{$player->position}}
-		      </td>
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			{{$diff->y}}
-		      </td>
-
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			{{$player->foot}}
-		      </td>
-
-		      <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-			<a href="{{route('player.show', $player)}}" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shado">
-			  Details
-			</a>
-		      </td>
-		    </tr>
-		    @endforeach
-		  </tbody>
-		</table>
-	      <div class="flex flex-1 items-center justify-center py-3">
-		<form action="{{route('players.destroy', $player)}}" method="POST">
+	      <hr>
+	      
+	      <!-- Register form-->
+	      <div class="container">
+		<form class="w-full max-w-lg" method="POST" action="{{route('player.update', $player)}}">
+		  <!-- secure token -->
 		  @csrf
-		  @method('DELETE')
-		  <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent self-center rounded">
-		    Delete Team
-		  </button>
+		  @method('PUT')
+
+		  <div class="flex flex-wrap -mx-3 mb-6">
+		    <x-custom-input 
+		      class="w-full md:w-1/3 px-3 mb-6 md:mb-0"
+		      name="name"
+		      title="Name"
+		      type="text"
+		      placeholder="Player's name"
+		      value="{{$player->name}}"
+		    />
+		  </div>
+
+		  <div class="flex flex-wrap -mx-3 mb-6">
+
+		    <div class="w-full border-0 px-3 mb-6 md:mb-0">
+		      <label 
+			class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+			for="team_id"
+		      >
+			Team
+		      </label>
+		      <select name="team_id">
+			@foreach($teams as $option)
+			  <option value="{{$option->id}}" {{$player->team_id==$option->id? "selected":""}}>
+			    {{$option->name}}
+			  </option>
+			@endforeach
+		      </select>
+		      @error('team_id')
+			 <p class="text-red-500 text-xs italic">{{$message}}</p>
+		      @enderror
+		    </div>
+
+		    <div class="w-full border-0 px-3 mb-6 md:mb-0">
+		      <label 
+			class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+			for="position"
+		      >
+			Position
+		      </label>
+		      <select name="position">
+			@foreach(['PT','DC','DF','MC','LI','LD','EXI','EXD','MO'] as $option)
+			  <option value="{{$option}}" {{$player->position== $option? "selected":""}}>
+			    {{$option}}
+			  </option>
+			@endforeach
+		      </select>
+		      @error('position')
+			 <p class="text-red-500 text-xs italic">{{$message}}</p>
+		      @enderror
+
+		    </div>
+		  </div>
+
+		  <div class="flex flex-wrap -mx-3 mb-6">
+		    <div class="w-full border-0 px-3 mb-6 md:mb-0">
+		      <label 
+			class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+			for="foot"
+		      >
+			Foot
+		      </label>
+		      <select name="foot">
+			@foreach(['L', 'R'] as $option)
+			  <option value="{{$option}}" {{$player->foot == $option?'selected':''}}>
+			    {{$option}}
+			  </option>
+			@endforeach
+		      </select>
+
+		      @error('foot')
+			 <p class="text-red-500 text-xs italic">{{$message}}</p>
+		      @enderror
+
+		    </div>
+
+		    <x-custom-input 
+		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      name="dorsal"
+		      title="Dorsal"
+		      type="number"
+		      value="{{$player->dorsal}}"
+		    />
+		    <x-custom-input 
+		      class="w-full border-0 px-3 mb-6 md:mb-0"
+		      name="born_date"
+		      title="Born Date"
+		      type="date"
+		      value="{{$player->born_date}}"
+		    />
+		  </div>
+
+		  <div class="container flex justify-center flex-1">
+		    <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+		      Update Player
+		    </button>
+		  </div>
 		</form>
 	      </div>
-	    </div>
-	  </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
